@@ -33,17 +33,26 @@ namespace E_Library_04.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("admin_password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("admin_username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("adminID");
 
                     b.ToTable("Admin");
+                });
+
+            modelBuilder.Entity("E_Library_04.Model.Administrators", b =>
+                {
+                    b.Property<int>("administratorID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("administratorID"), 1L, 1);
+
+                    b.Property<string>("administrator_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("administratorID");
+
+                    b.ToTable("Administrators");
                 });
 
             modelBuilder.Entity("E_Library_04.Model.ExamAndTestManagement", b =>
@@ -186,6 +195,23 @@ namespace E_Library_04.Migrations
                     b.HasKey("resourceID");
 
                     b.ToTable("ResourceManagement");
+                });
+
+            modelBuilder.Entity("E_Library_04.Model.Student", b =>
+                {
+                    b.Property<int>("studentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("studentID"), 1L, 1);
+
+                    b.Property<string>("student_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("studentID");
+
+                    b.ToTable("Student");
                 });
 
             modelBuilder.Entity("E_Library_04.Model.SubjectManagement", b =>

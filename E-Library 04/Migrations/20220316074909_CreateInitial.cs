@@ -14,13 +14,24 @@ namespace E_Library_04.Migrations
                 {
                     adminID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    admin_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    admin_username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    admin_password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    admin_name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Admin", x => x.adminID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Administrators",
+                columns: table => new
+                {
+                    administratorID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    administrator_name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Administrators", x => x.administratorID);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,6 +123,19 @@ namespace E_Library_04.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Student",
+                columns: table => new
+                {
+                    studentID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    student_name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Student", x => x.studentID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SubjectManagement",
                 columns: table => new
                 {
@@ -158,6 +182,9 @@ namespace E_Library_04.Migrations
                 name: "Admin");
 
             migrationBuilder.DropTable(
+                name: "Administrators");
+
+            migrationBuilder.DropTable(
                 name: "ExamAndTestManagement");
 
             migrationBuilder.DropTable(
@@ -174,6 +201,9 @@ namespace E_Library_04.Migrations
 
             migrationBuilder.DropTable(
                 name: "ResourceManagement");
+
+            migrationBuilder.DropTable(
+                name: "Student");
 
             migrationBuilder.DropTable(
                 name: "SubjectManagement");

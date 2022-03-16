@@ -38,8 +38,6 @@ namespace E_Library_04.Controllers
                 return BadRequest("Admin not found.");
 
             dbAdmin.admin_name = request.admin_name;
-            dbAdmin.admin_username = request.admin_username;
-            dbAdmin.admin_password = request.admin_password;
 
             await _context.SaveChangesAsync();
 

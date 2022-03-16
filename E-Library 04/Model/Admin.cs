@@ -7,7 +7,5 @@ namespace E_Library_04.Model
         [Key]
         public int adminID { get; set; }
         public string admin_name { get; set; } = string.Empty;
-        public string admin_username { get; set; } = string.Empty;
-        public string admin_password { get; set; } = string.Empty;
     }
 }

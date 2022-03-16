@@ -17,6 +17,8 @@ namespace E_Library_04.Data
         public DbSet<SystemManagement> SystemManagement { get; set; }
         public DbSet<ResourceManagement> ResourceManagement { get; set; }
         public DbSet<Admin> Admin { get; set; }
+        public DbSet<Student> Student { get; set; }
+        public DbSet<Administrators> Administrators { get; set; }
     }
 }
 
