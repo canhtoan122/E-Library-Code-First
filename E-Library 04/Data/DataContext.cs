@@ -13,7 +13,7 @@ namespace E_Library_04.Data
         public DbSet<ExamAndTestManagement> ExamAndTestManagement { get; set; }
         public DbSet<HelpManagement> HelpManagement { get; set; }
         public DbSet<NotificationManagement> NotificationManagement { get; set; }
-        public DbSet<FileManagement> FileManagement { get; set; }
+        public DbSet<FileData> FileData { get; set; }
         public DbSet<SystemManagement> SystemManagement { get; set; }
         public DbSet<ResourceManagement> ResourceManagement { get; set; }
         public DbSet<Admin> Admin { get; set; }

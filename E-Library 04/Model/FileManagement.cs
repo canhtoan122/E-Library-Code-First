@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace E_Library_04.Model
 {
     public class FileManagement
     {
-        [Key]
-        public int fileID { get; set; }
-        public string file_name { get; set; } = string.Empty;
+        
+        public IFormFile MyFile { get; set; }
+        public string AltText { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
     }
 }

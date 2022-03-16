@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Library_04.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220314083132_CreateInitial")]
+    [Migration("20220316041223_CreateInitial")]
     partial class CreateInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,43 +64,46 @@ namespace E_Library_04.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("exam_bank")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("test_bank")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("exam_and_test_ID");
 
                     b.ToTable("ExamAndTestManagement");
                 });
 
-            modelBuilder.Entity("E_Library_04.Model.ExamBank", b =>
+            modelBuilder.Entity("E_Library_04.Model.FileData", b =>
                 {
-                    b.Property<int>("exambankID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("exambankID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("exambank_name")
+                    b.Property<string>("FileExtension")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("exambankID");
-
-                    b.ToTable("ExamBank");
-                });
-
-            modelBuilder.Entity("E_Library_04.Model.FileManagement", b =>
-                {
-                    b.Property<int>("fileID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("fileID"), 1L, 1);
-
-                    b.Property<string>("file_name")
+                    b.Property<string>("FileName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("fileID");
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("FileManagement");
+                    b.Property<string>("MimeType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileData");
                 });
 
             modelBuilder.Entity("E_Library_04.Model.HelpManagement", b =>
@@ -166,6 +169,27 @@ namespace E_Library_04.Migrations
                     b.ToTable("NotificationManagement");
                 });
 
+            modelBuilder.Entity("E_Library_04.Model.ResourceManagement", b =>
+                {
+                    b.Property<int>("resourceID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("resourceID"), 1L, 1);
+
+                    b.Property<string>("resource_description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("resource_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("resourceID");
+
+                    b.ToTable("ResourceManagement");
+                });
+
             modelBuilder.Entity("E_Library_04.Model.SubjectManagement", b =>
                 {
                     b.Property<int>("subjectID")
@@ -213,14 +237,6 @@ namespace E_Library_04.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("teacherID"), 1L, 1);
 
                     b.Property<string>("teacher_name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("teacher_password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("teacher_username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

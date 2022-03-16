@@ -30,7 +30,9 @@ namespace E_Library_04.Migrations
                     exam_and_test_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     exam_and_test_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    exam_and_test_description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    exam_and_test_description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    exam_bank = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    test_bank = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,29 +40,19 @@ namespace E_Library_04.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExamBank",
+                name: "FileData",
                 columns: table => new
                 {
-                    exambankID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    exambank_name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileExtension = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MimeType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FilePath = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExamBank", x => x.exambankID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "FileManagement",
-                columns: table => new
-                {
-                    fileID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    file_name = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FileManagement", x => x.fileID);
+                    table.PrimaryKey("PK_FileData", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -106,6 +98,20 @@ namespace E_Library_04.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ResourceManagement",
+                columns: table => new
+                {
+                    resourceID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    resource_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    resource_description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ResourceManagement", x => x.resourceID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SubjectManagement",
                 columns: table => new
                 {
@@ -138,9 +144,7 @@ namespace E_Library_04.Migrations
                 {
                     teacherID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    teacher_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    teacher_username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    teacher_password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    teacher_name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -157,10 +161,7 @@ namespace E_Library_04.Migrations
                 name: "ExamAndTestManagement");
 
             migrationBuilder.DropTable(
-                name: "ExamBank");
-
-            migrationBuilder.DropTable(
-                name: "FileManagement");
+                name: "FileData");
 
             migrationBuilder.DropTable(
                 name: "HelpManagement");
@@ -170,6 +171,9 @@ namespace E_Library_04.Migrations
 
             migrationBuilder.DropTable(
                 name: "NotificationManagement");
+
+            migrationBuilder.DropTable(
+                name: "ResourceManagement");
 
             migrationBuilder.DropTable(
                 name: "SubjectManagement");
