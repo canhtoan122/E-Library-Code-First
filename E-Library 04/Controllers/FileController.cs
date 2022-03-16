@@ -133,20 +133,20 @@ namespace E_Library_04.Controllers
 
             return File(memory, contentType, fileName);
         }
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult> DeleteFile(int id)
-        //{
-        //    var file = _context.FileData.Where(n => n.Id == id).FirstOrDefault();
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteFile(int id)
+        {
+            var file = _context.FileData.Where(n => n.Id == id).FirstOrDefault();
 
-        //    var path = Path.Combine(AppDirectory, file?.FilePath);
+            var path = Path.Combine(AppDirectory, file?.FilePath);
 
 
-        //    if (path != null)
-        //    {
-        //        System.IO.File.Delete(path);
-        //        _context.SaveChanges();
-        //    }
-        //    return Ok(await _context.FileData.ToListAsync());
-        //}
+            if (path != null)
+            {
+                System.IO.File.Delete(path);
+                _context.SaveChanges();
+            }
+            return Ok(await _context.FileData.ToListAsync());
+        }
     }
 }
